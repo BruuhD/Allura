@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ============================================
+   VARIABLES Y ESTILOS BASE
+   ============================================ */
+:root {
+    --primary-color: #8EB525;
+    --primary-hover: #7a9e1f;
+    --white: #ffffff;
+    --black: #000000;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+    --border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   HEADER PRINCIPAL
+   ============================================ */
+header {
+    background: var(--primary-color);
+    width: 100%;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+/* ============================================
+   DESKTOP (>1200px)
+   ============================================ */
+@media (min-width: 1201px) {
+    header {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+    }
+
+    .header-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .header-title i {
+        font-size: 1.5rem;
+        color: var(--white);
+        transition: var(--transition);
+    }
+
+    .header-title h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--white);
+        white-space: nowrap;
+        transition: var(--transition);
+    }
+
+    .header-title:hover i,
+    .header-title:hover h3 {
+        transform: translateX(3px);
+    }
+
+    /* Usuario */
+    .header-user {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-shrink: 0;
+    }
+
+    .header-user .user-btn button {
+        border: 2px solid transparent;
+        height: 38px;
+        padding: 0 24px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.9rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .header-user .user-btn button:hover {
+        background: var(--white);
+        color: var(--primary-color);
+        border-color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .header-user .user-btn button:active {
+        transform: translateY(0);
+    }
+
+    .header-user .user-name {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 16px;
+        backdrop-filter: blur(10px);
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+    }
+
+    .header-user .user-name:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .header-user .user-name i {
+        font-size: 1.3rem;
+        color: var(--black);
+    }
+
+    .header-user .user-name p {
+        margin: 0;
+        color: var(--black);
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   TABLET (768px - 1200px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1200px) {
+    header {
+        min-height: 60px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+        padding: 12px 20px;
+        gap: 15px;
+    }
+
+    .header-title {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-title i {
+        font-size: 1.4rem;
+        color: var(--white);
+    }
+
+    .header-title h3 {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--white);
+    }
+
+    .header-user {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .header-user .user-btn button {
+        border: 2px solid transparent;
+        height: 36px;
+        padding: 0 20px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.85rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .header-user .user-btn button:hover {
+        background: var(--white);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    .header-user .user-name {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: var(--border-radius);
+    }
+
+    .header-user .user-name i {
+        font-size: 1.2rem;
+        color: var(--white);
+    }
+
+    .header-user .user-name p {
+        margin: 0;
+        color: var(--white);
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   MÓVIL GRANDE (481px - 767px)
+   ============================================ */
+@media (min-width: 481px) and (max-width: 767px) {
+    header {
+        min-height: 60px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+        padding: 10px 15px;
+        gap: 12px;
+    }
+
+    .header-title {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .header-title i {
+        font-size: 1.3rem;
+        color: var(--white);
+    }
+
+    .header-title h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--white);
+    }
+
+    .header-user {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .header-user .user-btn button {
+        height: 34px;
+        padding: 0 18px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 2px solid transparent;
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.8rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .header-user .user-btn button:hover {
+        background: var(--white);
+        color: var(--primary-color);
+    }
+
+    .header-user .user-name {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: var(--border-radius);
+    }
+
+    .header-user .user-name i {
+        font-size: 1.1rem;
+        color: var(--white);
+    }
+
+    .header-user .user-name p {
+        margin: 0;
+        color: var(--white);
+        font-weight: 500;
+        font-size: 0.85rem;
+        display: none;
+    }
+}
+
+/* ============================================
+   MÓVIL PEQUEÑO (<480px)
+   ============================================ */
+@media (max-width: 480px) {
+    header {
+        min-height: 55px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .header-title {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .header-title i {
+        font-size: 1.2rem;
+        color: var(--white);
+    }
+
+    .header-title h3 {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--white);
+    }
+
+    .header-user {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-user .user-btn button {
+        height: 32px;
+        padding: 0 14px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 2px solid transparent;
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .header-user .user-btn button:active {
+        background: var(--white);
+        color: var(--primary-color);
+    }
+
+    .header-user .user-name {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+    }
+
+    .header-user .user-name i {
+        font-size: 1.1rem;
+        color: var(--white);
+    }
+
+    .header-user .user-name p {
+        display: none;
+    }
+}
+
+/* ============================================
+   MODAL NFC
+   ============================================ */
+#subirNfcModal {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+#subirNfcModal .modal-dialog {
+    max-width: 70% !important;
+}
+.simbolo-fondo-modal {
+    pointer-events: none;
+}
+.btn-close-nfc{
+    width: 50px;
+    height: auto;
+    border: none;
+}
+
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 95% !important;
+        margin: 1rem auto;
+    }
+}
+
+.modal-content {
+    width: 100%;
+    background: #E5DFD3;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #f2ede2;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px 12px 0 0;
+}
+
+@media (max-width: 576px) {
+    .modal-header {
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+.modal-header .modal-title {
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+@media (max-width: 576px) {
+    .modal-body {
+        padding: 1.5rem 1rem;
+    }
+}
+
+.modal-footer {
+    padding: 1rem 2rem;
+    border-top: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 576px) {
+    .modal-footer {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed #8EB525;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    transition: var(--transition);
+    cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-zone:hover {
+    border-color: #7a9e1f;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.upload-zone.dragging {
+    border-color: #7a9e1f;
+    background: rgba(142, 181, 37, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 3.5rem;
+    color: #8EB525;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 576px) {
+    .upload-zone {
+        padding: 2rem 1rem;
+        min-height: 180px;
+    }
+    
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* ==============================
+        MODAL PASSWORD
+   ============================== */
+
+   #cambiarPasswordModal {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-pwd {
+  max-width: 480px;
+}
+
+.content-pwd {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.header-pwd {
+  background: #8EB525;
+  padding: 1.25rem 1.5rem;
+  border-bottom: none;
+}
+
+.title-pwd {
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.header-pwd .btn-close-password {
+  background: transparent;
+  width: 50px;
+  height: auto;
+  border:none;
+}
+
+.body-pwd {
+  padding: 2rem 1.5rem;
+}
+
+.input-pwd {
+  border: 2px solid #dee2e6;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.input-pwd:focus {
+  border-color: #8EB525;
+  box-shadow: 0 0 0 3px rgba(142, 181, 37, 0.15);
+}
+
+.footer-pwd {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-pwd-primary {
+  background: #8EB525;
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-pwd-primary:hover {
+  background: #7a9e1f;
+  transform: translateY(-1px);
+}
+
+.btn-pwd-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 576px) {
+  .modal-pwd {
+    max-width: 95%;
+  }
+  
+  .body-pwd {
+    padding: 1.5rem 1rem;
+  }
+}

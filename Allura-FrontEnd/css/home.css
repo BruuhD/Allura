@@ -1,0 +1,424 @@
+
+
+body{
+    background: #E5DFD3;
+    padding: 0;
+    margin: 0;
+    min-width: 400px;
+}
+
+main{
+    flex: 1;
+    overflow-y: auto;
+    background: #E5DFD3;
+}
+.simbolo-fondo{
+    z-index: 1;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 35%;
+    }
+}
+.main-contents{
+    z-index: 2;
+    display: flex;
+    height: 100%;
+}
+#modal-resumen{
+    z-index: 1010;
+}
+
+
+.acciones-resumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.acciones-resumen p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.acciones-resumen p i {
+  color: #999;
+  font-size: 14px;
+}
+
+.btn-filtro {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 102, 255, 0.3);
+}
+
+.btn-filtro i {
+  font-size: 16px;
+}
+
+.btn-filtro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.4);
+  background: linear-gradient(135deg, #0052cc, #007bff);
+}
+.btn-filtro-icon {
+  background: #f0f4ff;
+  border: 1px solid #d0d8ff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color:#8EB525;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-filtro-icon:hover {
+  background: #0066ff;
+  color: #fff;
+  transform: rotate(90deg);
+  border-color: #0066ff;
+}
+
+.copyrigth{
+    position: relative;
+}
+body {
+    min-height: 650px;
+}
+@media (min-width:1001px ){
+    .layout {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        height: 100vh;
+    }
+    main{
+        height: calc(100vh - 50px); 
+        display: flex;
+        flex-direction: column;
+    }
+    .simbolo-fondo{
+        height: calc(100vh - 50px); 
+    }
+    .content-1{
+        width: 60%;
+        height: auto;
+        margin-top: 5vh;
+    }
+    .content-1-totales{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        height: 200px;
+        width: 100%;
+    }
+    .totales{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: 35%;
+        height: 100px;
+        border-radius: 20px;
+        padding:20px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .totales p{
+        border-bottom: 2px solid #8EB525;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #montoGananciaNeta,
+    #montoVentaNeta{
+        border-bottom: none;
+        font-size: 25px;
+        color: #8EB525;
+        width: calc(100% - 50px);
+        text-align: center;
+    }
+    .info-totales{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .info-totales img{
+        width: 40px;
+    }
+    .content-1-graficas{
+        width: 100%;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .content-1-graficas p{
+        width: calc(70% + 100px);
+    }
+    .grafico-ventas{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: calc(70% + 80px);
+        padding: 10px;
+        height: 250px;
+        border-radius: 20px;
+    }
+    .content-2{
+        width: 40%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10vh;
+    }
+    .total-cobrar , .total-pagar{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        p{
+            padding: 0;
+            margin: 0;
+        }
+    }
+    .total-pagar{
+        margin-top: 30px;
+    }
+    .total-content{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: 200px;
+        border-radius: 20px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            font-weight: bold;
+        }
+    }
+    .resumen{
+        margin-top: 20px;
+        width: 80%;
+    }
+    .content-resumen {
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);   
+        gap: 30px;                            
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .resumen-semanal,
+    .resumen-mensual,
+    .resumen-cattleya,
+    .resumen-toyota{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        min-width: 100px;
+        p{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+    }
+    .resumen-semanal p:nth-child(2),
+    .resumen-mensual p:nth-child(2),
+    .resumen-cattleya p:nth-child(2),
+    .resumen-toyota p:nth-child(2){
+        color: #8EB525;
+        margin-top: 10px;
+    }
+    .copyrigth{
+        height: 10%;
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (max-width: 1000px) {
+
+    .content-1{
+        width: 100%;
+        height: 100%;
+    }
+    .simbolo-fondo{
+        height: 90vh;
+    }
+    .main-contents{
+        flex-direction: column;
+    }
+    .content-1{
+        width: 100%;
+        height: auto;
+        margin-top: 5vh;
+    }
+    .content-1-totales{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        height: 200px;
+        width: 100%;
+    }
+    .totales{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: 35%;
+        height: 100px;
+        border-radius: 20px;
+        padding:20px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .totales p{
+        border-bottom: 2px solid #8EB525;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #montoGananciaNeta,
+    #montoVentaNeta{
+        border-bottom: none;
+        font-size: 25px;
+        color: #8EB525;
+        width: calc(100% - 50px);
+        text-align: center;
+    }
+    .info-totales{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .info-totales img{
+        width: 40px;
+    }
+    .content-1-graficas{
+        width: 100%;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .content-1-graficas p{
+        width: calc(70% + 100px);
+    }
+    .grafico-ventas{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: calc(70% + 80px);
+        padding: 10px;
+        height: 250px;
+        border-radius: 20px;
+    }
+    .content-2{
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10vh;
+    }
+    .total-cobrar , .total-pagar{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        p{
+            padding: 0;
+            margin: 0;
+        }
+    }
+    .total-pagar{
+        margin-top: 30px;
+    }
+    .total-content{
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        width: 200px;
+        border-radius: 20px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            font-weight: bold;
+        }
+    }
+    .resumen{
+        margin-top: 20px;
+        width: 80%;
+    }
+    .content-resumen {
+        background: white;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.485);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);   
+        gap: 30px;                            
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .resumen-semanal,
+    .resumen-mensual,
+    .resumen-cattleya,
+    .resumen-toyota{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        min-width: 100px;
+        p{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+    }
+    .resumen-semanal p:nth-child(2),
+    .resumen-mensual p:nth-child(2),
+    .resumen-cattleya p:nth-child(2),
+    .resumen-toyota p:nth-child(2){
+        color: #8EB525;
+        margin-top: 10px;
+    }
+    .copyrigth{
+        height: 10%;
+        width: 100%;
+        text-align: center;
+    }
+}   
+

@@ -1,0 +1,598 @@
+
+body{
+    margin: 0;
+    padding: 0;
+}
+#toggleSidebar{
+    display: none;
+}
+.sidebar-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+aside{
+    position: relative;
+    background: #E5DFD3;
+}
+.sidebar-logout{
+    position: absolute;
+    width: 200px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar-logout button{
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    transition: background 0.7s ease-out;
+    p{
+        margin: 0;
+        padding: 0;
+        padding-left: 10px;
+    }
+}
+.menu-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.menu-sidebar a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+.fondo-sidebar{
+    display: none;
+}
+@media (min-width:1001px ){
+    aside{
+        grid-area: sidebar;
+        height: 100vh;
+        width: 200px;
+        border-right: 2px solid rgb(44, 44, 44);
+    }
+    .sidebar-logo img{
+        height: 200px;
+        width: 200px;
+    }
+    .menu-sidebar a{
+        width: 140px;
+        height: 30px;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        border-radius: 10px;
+        i{
+            padding-right: 10px;
+        }
+    }
+    .menu-sidebar a:hover{
+        background: #8EB525;
+    }
+    .sidebar-logout{
+        width: 200px;
+    }
+    .sidebar-logout button:hover{
+        background: red;
+        color: white;
+    }
+}
+
+@media (max-width:1000px ){
+    #toggleSidebar{
+        display: block;
+        background: #E5DFD3;
+        border:2px solid #2c5125;
+        border-radius: 0 10px 10px 0;
+        position: fixed;
+        left: 0;
+        top: 30px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        transition: left 0.5s ease-out;
+        color: #2c5125;
+        font-size:30px;
+    }
+    #toggleSidebar.active{
+        left: 300px;
+    }
+    .aside{
+        position: fixed;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        height: 100vh;
+        transition: all 0.5s ease-out;
+    }
+    .aside.active{
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        border-right:2px solid #2c5125;
+    }
+    .sidebar-logo img{
+        width: 0;
+        height: 200px;
+        transition: width 0.5s ease-out;
+    }
+    .aside.active .sidebar-logo img{
+        width: 200px;
+    }
+    .sidebar-logout{
+        width: 300px;
+    }
+    .menu-sidebar a{
+        width: 140px;
+        height: 30px;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        border-radius: 10px;
+        border: 1px solid rgb(38, 38, 38);
+        i{
+            padding-right: 10px;
+        }
+    }
+}
+
+@media (max-width:600px){
+    .aside.active ~ .fondo-sidebar{
+        display: block;
+        background: rgba(0, 0, 0, 0.493);
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+
+
+/* ===========================
+   🔷 OVERLAY PRINCIPAL
+=========================== */
+.modal-resumen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+/* ===========================
+   🔷 CONTENEDOR DEL MODAL
+=========================== */
+.modal-resumen-content {
+  background: #fff;
+  border-radius: 15px;
+  width: 480px;
+  max-width: 95%;
+  padding: 25px 25px 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: modalFadeIn 0.25s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===========================
+   🔷 ANIMACIÓN DE APARICIÓN
+=========================== */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   🔷 BOTÓN DE CIERRE (X)
+=========================== */
+.modal-resumen-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #7cb342;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.modal-resumen-close:hover {
+  color: #7cb342;
+  transform: scale(1.15);
+}
+
+/* ===========================
+   🔷 TÍTULO PRINCIPAL
+=========================== */
+.modal-resumen-title {
+  font-size: 1.7rem;
+  text-align: center;
+  color: #7cb342;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* ===========================
+   🔷 CONTENIDO DEL MODAL
+=========================== */
+.modal-resumen-body {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* ===========================
+   🔷 SECCIONES INTERNAS
+=========================== */
+.modal-resumen-section {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: 0.25s;
+}
+.modal-resumen-section:hover {
+  border-color: #7cb342;
+  box-shadow: 0 0 8px rgba(181, 33, 74, 0.1);
+}
+
+/* ===========================
+   🔷 SUBTÍTULOS
+=========================== */
+.modal-resumen-subtitle {
+  color: #7cb342;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   🔷 GRUPOS DE INPUTS
+=========================== */
+.modal-resumen-group {
+  margin-bottom: 12px;
+}
+
+.modal-resumen-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.modal-resumen-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+.modal-resumen-group select:focus {
+  border-color: #7cb342;
+  box-shadow: 0 0 0 2px rgba(122, 27, 52, 0.1);
+}
+
+/* ===========================
+   🔷 PIE DEL MODAL
+=========================== */
+.modal-resumen-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* ===========================
+   🔷 BOTONES
+=========================== */
+.modal-resumen-btn-aplicar,
+.modal-resumen-btn-cancelar {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-resumen-btn-aplicar {
+  background: #7cb342;
+  color: #fff;
+}
+.modal-resumen-btn-aplicar:hover {
+  background: #7cb342;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(122, 27, 52, 0.3);
+}
+
+.modal-resumen-btn-cancelar {
+  background: #e5e5e5;
+  color: #333;
+}
+.modal-resumen-btn-cancelar:hover {
+  background: #d6d6d6;
+}
+
+/* ===========================
+   🔷 SCROLL PERSONALIZADO
+=========================== */
+.modal-resumen-body::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-resumen-body::-webkit-scrollbar-thumb {
+  background: #b5b5b5;
+  border-radius: 6px;
+}
+.modal-resumen-body::-webkit-scrollbar-thumb:hover {
+  background: #7cb342;
+}
+
+/* ===========================
+   🔷 RESPONSIVE
+=========================== */
+@media (max-width: 520px) {
+  .modal-resumen-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .modal-resumen-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-resumen-btn-aplicar,
+  .modal-resumen-btn-cancelar {
+    width: 100%;
+  }
+
+  .modal-resumen-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.content-resumen-unificado {
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.detalle-filtros {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.detalle-filtros-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.detalle-filtros p {
+    margin: 0;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.detalle-filtros p b {
+    display: inline-block;
+    min-width: 180px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Estilo para los valores en verde */
+.detalle-filtros .valor-filtro {
+    color: #7cb342;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Grid layout para 2 columnas como la imagen */
+.detalle-filtros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:15px
+}
+
+.filtro-item {
+    background: #fafafa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 3px solid #7cb342;
+}
+
+.filtro-item-label {
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.filtro-item-valor {
+    font-size: 20px;
+    color: #7cb342;
+    font-weight: 700;
+}
+
+.filtro-item-detalle {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   🧾 MODAL DE REPORTES
+========================== */
+#reportModalOverlay{
+  z-index: 1050;
+}
+
+.report-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.report-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.report-modal-content-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px 30px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Close button */
+.report-modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+.report-modal-close-button:hover { color: #000; }
+
+/* Título principal */
+.report-modal-main-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Sección info */
+.report-modal-info-section {
+  margin-bottom: 20px;
+}
+.report-modal-info-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.report-modal-date-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.report-modal-date-input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.report-modal-date-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.report-modal-date-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Sección select */
+.report-modal-section {
+  margin-bottom: 25px;
+}
+.report-modal-section-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.report-modal-select-dropdown {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Botones */
+.report-modal-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.report-modal-action-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.report-modal-pdf-btn {
+  background: #007bff;
+  color: white;
+}
+.report-modal-pdf-btn:hover {
+  background: #0056b3;
+}
+.report-modal-close-btn {
+  background: #e4e4e4;
+  color: #333;
+}
+.report-modal-close-btn:hover {
+  background: #d0d0d0;
+}
